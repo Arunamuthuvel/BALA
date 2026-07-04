@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Miniature Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="galleryTitle">💖 Miniature Gallery 💖</h1>
+
+    <button id="galleryBtn" onclick="showPic()">
+    📸 Our Memorable Pics
+</button>
+
+    <div id="photoArea"></div>
+
+    <p id="caption"></p>
+
+    <button id="nextBtn" onclick="nextImage()" style="display:none;">
+        ➜ Next Pic
+    </button>
+
+</div>
+
+<script>
+
+let photos = [
+    "images/school.jpeg",
+    "images/function.jpeg",
+    "images/temple.jpeg",
+    "images/bala.jpeg"
+];
+
+let captions = [
+    "OUR BEAUTIFUL DAYS❤️",
+    "FOREVER FRIENDS🫂",
+    "TOGETHER IS MY FAVORITE PLACE TO BE🫶",
+    " CRAZY ONE☺️❤️‍🩹"
+];
+
+let current = 0;
+
+function showPic(){
+
+    document.getElementById("photoArea").innerHTML =
+        `<img src="${photos[current]}" class="photo">`;
+
+    document.getElementById("caption").innerHTML =
+        captions[current];
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+}
+
+function nextImage(){
+
+    current++;
+
+    if (current >= photos.length) {
+    document.getElementById("galleryTitle").style.display = "none";
+    document.getElementById("galleryBtn").style.display = "none";
+
+    document.getElementById("photoArea").innerHTML = `
+        <div class="end-message">
+            <h1>💖 About For You 💖</h1>
+
+            <p>
+            Thank you for being such an important part of my life. ❤️
+            Every moment we shared became a beautiful memory.
+            No matter where life takes us,
+            I hope our friendship stays forever. 🫂✨
+            </p>
+
+            <h2>🌸 Forever Friends 🌸</h2>
+            <button onclick="window.location.href='advice.html'">
+    ➜ Next
+</button>
+        </div>
+    `;
+
+    document.getElementById("caption").innerHTML = "";
+    document.getElementById("nextBtn").style.display = "none";
+    return;
+}
+
+    document.getElementById("photoArea").innerHTML =
+        `<img src="${photos[current]}" class="photo">`;
+
+    document.getElementById("caption").innerHTML =
+        captions[current];
+}
+
+</script>
+
+</body>
+</html>
